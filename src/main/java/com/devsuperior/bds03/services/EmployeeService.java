@@ -20,7 +20,7 @@ public class EmployeeService {
 	@Transactional(readOnly = true)
 	public Page<EmployeeDTO> findAll(Pageable pageable) {
 		Page<Employee> page = repository.findAll(pageable);
-		return page.map(x -> new EmployeeDTO(x));
+		return page.map(EmployeeDTO::new);
 	}
 
 	@Transactional
